@@ -3,8 +3,8 @@ function joinUs(){
   all = $form.form('get values');
   console.log(all);
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycby2s3BIgiQ-njovvNznhxEycEvr44uA4EjhjCv8uzgKIdVvNyDr/exec",
-    data: {Name:all.Name, Student_ID:all.Student_ID, Email:all.Email, Phone_Num:all.Phone_Num, Grade:all.Grade},
+    url: "https://script.google.com/macros/u/0/s/AKfycbwYXHNSpr-Wo3tNqKF-QR1dAWOIVnEYE9hJRDFBTrimWVCPPJXF/exec",
+    data: {Name:all.Name, Student_ID:all.Student_ID, Department:all.Department, Phone_Num:all.Phone_Num, Grade:all.Grade},
     type: "POST",
     success:function(){      
       alert("빠른 시일 내에 검토해보겠습니다.\n감사합니다.");
@@ -67,16 +67,12 @@ $(document)
         }
         ]
       },
-      Email: {
-        identifier: 'Email',
+      Department: {
+        identifier: 'Department',
         rules: [
         {
           type   : 'empty',
-          prompt : 'Please enter an email'
-        },
-        {
-          type   : 'email',
-          prompt : 'Please enter a valid email address'
+          prompt : 'Please enter your department'
         }
         ]
       },
