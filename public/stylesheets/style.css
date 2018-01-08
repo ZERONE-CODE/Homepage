@@ -170,3 +170,7 @@ iframe body {
 body, html {
   height: 100%;
 }
+.ui.loading.form:before {
+  filter: blur(50px) !important;
+  background: rgba(255,255,255,1) !important;
+}

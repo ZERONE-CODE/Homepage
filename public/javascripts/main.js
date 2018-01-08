@@ -1,7 +1,8 @@
 function joinUs(){
   var $form = $('.ui.inverted.form'),
   all = $form.form('get values');
-  console.log(all);
+  // console.log(all);
+  $form.attr('class',"ui inverted loading form");
   $.ajax({
     crossDomain: true,
     url: "https://script.google.com/macros/s/AKfycbwYXHNSpr-Wo3tNqKF-QR1dAWOIVnEYE9hJRDFBTrimWVCPPJXF/exec",
@@ -12,6 +13,9 @@ function joinUs(){
   .done(function(res) {
     // console.log('success')
     $('#adduser').form('clear')
+    $('.ui.success.modal')
+    .modal('show');
+    $form.attr('class',"ui inverted form");
   })
   .fail(function(e) {
     // console.log('error: ')
@@ -24,9 +28,6 @@ $(document)
   .modal({
     allowMultiple: false
   });
-
-  $('.ui.success.modal')
-  .modal('attach events', '.submit.button');
 
   $('.ui.basic.modal')
   .modal({
