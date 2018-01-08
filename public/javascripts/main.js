@@ -10,15 +10,23 @@ function joinUs(){
     
   })
   .done(function(res) {
-    console.log('success')
+    // console.log('success')
+    $('#adduser').form('clear')
   })
   .fail(function(e) {
-    console.log('error: ')
-    console.log(e)
+    // console.log('error: ')
+    // console.log(e)
   });
 }
 $(document)
 .ready(function() {
+  $('.modal')
+  .modal({
+    allowMultiple: false
+  });
+
+  $('.ui.success.modal')
+  .modal('attach events', '.submit.button');
 
   $('.ui.basic.modal')
   .modal({
