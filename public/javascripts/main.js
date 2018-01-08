@@ -3,12 +3,18 @@ function joinUs(){
   all = $form.form('get values');
   console.log(all);
   $.ajax({
-    url: "https://script.google.com/macros/u/0/s/AKfycbwYXHNSpr-Wo3tNqKF-QR1dAWOIVnEYE9hJRDFBTrimWVCPPJXF/exec",
-    data: {Name:all.Name, Student_ID:all.Student_ID, Department:all.Department, Phone_Num:all.Phone_Num, Grade:all.Grade},
+    crossDomain: true,
+    url: "https://script.google.com/macros/s/AKfycbwYXHNSpr-Wo3tNqKF-QR1dAWOIVnEYE9hJRDFBTrimWVCPPJXF/exec",
     type: "POST",
-    success:function(){      
-      alert("빠른 시일 내에 검토해보겠습니다.\n감사합니다.");
-    }
+    data: all,
+    
+  })
+  .done(function(res) {
+    console.log('success')
+  })
+  .fail(function(e) {
+    console.log('error: ')
+    console.log(e)
   });
 }
 $(document)
@@ -39,7 +45,7 @@ $(document)
   $('#adduser')
   .form({
     inline : true,
-    onValid: function(field) {},
+    onSuccess: function(event, fields) {joinUs()},
     fields: {
       Name: {
         identifier: 'Name',
@@ -62,8 +68,8 @@ $(document)
           prompt : 'Student_ID must be {ruleValue} characters'
         },
         {
-          type   : 'decimal',
-          prompt : 'Student_ID must be a decimal number'
+          type   : 'number',
+          prompt : 'Student_ID must be a number'
         }
         ]
       },

@@ -7,7 +7,9 @@ var request = require('request'),
 var url_stu = "https://www.acmicpc.net/school/ranklist/426";
 var url_school = "https://www.acmicpc.net/ranklist/school";
 
+
 var rank = [{"handle": "","solved": ""},{"handle": "","solved": ""},{"handle": "","solved": ""}];
+function get_rank(){
 request(url_stu, function (err, res, html) {
     if (!err) {
         var $ = cheerio.load(html);
@@ -26,7 +28,9 @@ request(url_stu, function (err, res, html) {
         console.log(rank);
     }
 })
+}
 var contents = {"rank": "", "school": "","solved": ""};
+function get_contents(){
 request(url_school, function (err, res, html) {
     if (!err) {
         var $ = cheerio.load(html);
@@ -50,10 +54,18 @@ request(url_school, function (err, res, html) {
         console.log(contents);
     }
 })
+}
+
+function render(res){
+    res.render('index', { rank: rank, contents: contents });
+}
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { rank: rank, contents: contents });
+router.get('/', async function(req, res, next) {
+    await get_rank();
+    await get_contents();
+    await render(res);
+    //res.render('index', { rank: rank, contents: contents });
 });
 
 module.exports = router;
