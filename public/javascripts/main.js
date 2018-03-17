@@ -5,7 +5,7 @@ function joinUs(){
   $form.attr('class',"ui inverted loading form");
   $.ajax({
     crossDomain: true,
-    url: "https://script.google.com/macros/s/AKfycbwYXHNSpr-Wo3tNqKF-QR1dAWOIVnEYE9hJRDFBTrimWVCPPJXF/exec",
+    url: "https://script.google.com/macros/s/AKfycbwGgs0gnT2PbJYMZy7LucgTFPOTzyK95eFwZLKhFDjMe7EEP401/exec",
     type: "POST",
     data: all,
     
